@@ -1,0 +1,15 @@
+# Data
+dataset: mnist  # mnist hoặc cifar_10 hoặc pascal
+num_classes: 10 # tùy vào dataset
+batch_size: 32
+shuffle: True
+
+# Parameters
+num_epochs: 20
+learning_rate: 1e-5
+momentum: 0.5
+patience: 5
+
+# Model
+model: lenet # lenet, googlenet, resnet18 hoặc resnet50
+input_channel: 1 # 1 cho MNIST, 3 cho CIFAR10
