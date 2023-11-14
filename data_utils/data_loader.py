@@ -45,6 +45,7 @@ class PASCAL_VOC_2007_Dataset():
     
 class getDataloader():
     def __init__(self, config):
+        self.config = config
         if config['dataset'] == 'mnist':
             self.train_dataset = mnist_dataset_train
             self.test_dataset = mnist_dataset_test
