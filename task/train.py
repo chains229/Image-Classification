@@ -27,7 +27,7 @@ class Training():
           os.makedirs(self.save_path)
         if os.path.exists(os.path.join(self.save_path, 'last_model.pth')):
             checkpoint = torch.load(os.path.join(self.save_path, 'last_model.pth'))
-            self.base_model.load_state_dict(checkpoint['model_state_dict'])
+            self.model.load_state_dict(checkpoint['model_state_dict'])
             self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
             initial_epoch = checkpoint['epoch'] + 1
             print(f"training from epoch {initial_epoch}")
