@@ -1,6 +1,6 @@
 # Data
-dataset: mnist  # mnist hoặc cifar_10 hoặc pascal
-num_classes: 10 # tùy vào dataset
+dataset: mnist  # mnist or cifar_10 
+num_classes: 10 
 batch_size: 128
 shuffle: True
 
@@ -11,7 +11,7 @@ momentum: 0.5
 patience: 5
 
 # Model
-model: lenet # lenet, googlenet, resnet18 hoặc resnet50
-input_channel: 1 # 1 cho MNIST, 3 cho CIFAR10
+model: lenet # lenet, googlenet or resnet18 
+input_channel: 1 # 1 for MNIST, 3 for CIFAR10
 
 save_path: ./save
