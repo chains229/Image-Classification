@@ -23,10 +23,8 @@ class Training():
         self.optimizer = optim.SGD(self.model.parameters(), lr = self.learning_rate, momentum = self.momentum)
 
     def main(self):
-
         if not os.path.exists(self.save_path):
           os.makedirs(self.save_path)
-
         if os.path.exists(os.path.join(self.save_path, 'last_model.pth')):
             checkpoint = torch.load(os.path.join(self.save_path, 'last_model.pth'))
             self.base_model.load_state_dict(checkpoint['model_state_dict'])
@@ -37,7 +35,6 @@ class Training():
             initial_epoch = 0
             print("training for the 1st time...")
             train_loss = 0.
-
         if os.path.exists(os.path.join(self.save_path, 'best_model.pth')):
             checkpoint = torch.load(os.path.join(self.save_path, 'best_model.pth'))
             best_score = checkpoint['score']
@@ -110,7 +107,7 @@ class Training():
                 print(f"saved the best model with accuracy {score:.4f}")
 
             if threshold >= self.patience:
-                print(f"early stopping after epoch {epoch + 1}")
+                print(f"early stopped after epoch {epoch + 1}")
                 break
 
         print(' T R A I N I N G    D O N E !')
