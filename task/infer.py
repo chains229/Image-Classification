@@ -1,7 +1,7 @@
     
 import os
 import torch
-from data_utils.load_data import getDataloader
+from data_utils.data_loader import getDataloader
 from evaluate.evaluate import score
 from model.model import CNN_Model
 from tqdm import tqdm
