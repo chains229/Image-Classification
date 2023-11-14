@@ -1,12 +1,12 @@
 # Data
 dataset: mnist  # mnist hoặc cifar_10 hoặc pascal
 num_classes: 10 # tùy vào dataset
-batch_size: 32
+batch_size: 128
 shuffle: True
 
 # Parameters
 num_epochs: 20
-learning_rate: 0.00001
+learning_rate: 0.001
 momentum: 0.5
 patience: 5
 
