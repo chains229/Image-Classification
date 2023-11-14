@@ -18,6 +18,8 @@ class Predicting():
         if os.path.exists(os.path.join(self.save_path, 'best_model.pth')):
             checkpoint = torch.load(os.path.join(self.save_path, 'best_model.pth'), map_location=self.device)
             self.model.load_state_dict(checkpoint['model_state_dict'])
+            print('\n')
+            print('now testing!!!\n')
         else:
             print('havent trained yet...')
 
