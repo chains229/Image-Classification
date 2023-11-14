@@ -13,3 +13,5 @@ patience: 5
 # Model
 model: lenet # lenet, googlenet, resnet18 hoặc resnet50
 input_channel: 1 # 1 cho MNIST, 3 cho CIFAR10
+
+save_path: ./save
