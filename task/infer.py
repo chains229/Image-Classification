@@ -28,7 +28,7 @@ class Predicting():
 
         with torch.no_grad():
             for batch, (it,item) in enumerate(tqdm(self.test_loader)):
-                images, labels = item['image'].to(self.device), item['label'].to(self.device)
+                images, labels = it.to(self.device), item.to(self.device)
                 logits = self.model(images)
                 true_labels.extend(labels.cpu().numpy())
                 pred_labels.extend(logits.argmax(-1).cpu().numpy())
