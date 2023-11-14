@@ -2,7 +2,7 @@
 import os
 import torch
 from data_utils.data_loader import getDataloader
-from evaluate.evaluate import score
+from evaluate.evaluate import cal_score
 from model.model import CNN_Model
 from tqdm import tqdm
 from sklearn.metrics import classification_report
@@ -33,7 +33,7 @@ class Predicting():
                 true_labels.extend(labels.cpu().numpy())
                 pred_labels.extend(logits.argmax(-1).cpu().numpy())
         
-        cm, test_acc, test_f1, test_precision, test_recall = score(true_labels,pred_labels)
+        cm, test_acc, test_f1, test_precision, test_recall = cal_score(true_labels,pred_labels)
         print(f"test acc: {test_acc:.4f} | test f1: {test_f1:.4f} | test precision: {test_precision:.4f} | test recall: {test_recall:.4f}")
         print("confusion matrix:\n")
         print(cm)
