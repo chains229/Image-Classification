@@ -20,7 +20,7 @@ class Training():
         self.train_loader = getDataloader(config).get_train()
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model = CNN_Model(config).to(self.device)
-        self.optimizer = optim.SGD(lr = self.learning_rate, momentum = self.momentum)
+        self.optimizer = optim.SGD(self.model.parameters(), lr = self.learning_rate, momentum = self.momentum)
 
     def main(self):
 
