@@ -5,31 +5,36 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision import datasets
 import torchvision.transforms as transforms
 
-transform_train = transforms.Compose([
-    transforms.RandomCrop(32, padding=4),
-    transforms.RandomHorizontalFlip(),
-    transforms.ToTensor(),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
-])
-
-transform_test = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
-])
-
 # MNIST
-mnist_dataset_train = datasets.MNIST(
-    root='./data', train=True, download=True, transform=transform_train)
+mnist_dataset_train = datasets.MNIST(root=data_root, train=True, download=True,
+                           transform=transforms.Compose([
+                               transforms.ToTensor(),
+                               transforms.Normalize((0.1307,), (0.3081,))
+                           ]))
 
-mnist_dataset_test = datasets.MNIST(
-    root='./data', train=False, download=True, transform=transform_test)
+mnist_dataset_test = datasets.MNIST(root=data_root, train=False, download=True,
+                           transform=transforms.Compose([
+                                transforms.ToTensor(),
+                                transforms.Normalize((0.1307,), (0.3081,))
+                            ]))
     
 # CIFAR10
 cifar_10_dataset_train = datasets.CIFAR10(
-    root='./data', train=True, download=True, transform=transform_train)
+                root=data_root, train=True, download=True,
+                transform=transforms.Compose([
+                    transforms.Pad(4),
+                    transforms.RandomCrop(32),
+                    transforms.RandomHorizontalFlip(),
+                    transforms.ToTensor(),
+                    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+                ]))
 
 cifar_10_dataset_test = datasets.CIFAR10(
-    root='./data', train=False, download=True, transform=transform_test)
+                root=data_root, train=False, download=True,
+                transform=transforms.Compose([
+                    transforms.ToTensor(),
+                    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+                ]))
     
 # PASCAL VOC 2007 (chưa xong)
 '''
