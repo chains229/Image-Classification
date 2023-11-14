@@ -58,9 +58,7 @@ class Training():
             for batch, (it,item) in enumerate(self.train_loader):
                 images, labels = it.to(self.device), item.to(self.device)
                 self.optimizer.zero_grad()
-                pred = self.model(images)
-
-                loss = self.loss_fn(pred, labels)
+                pred, loss = self.model(images, labels)
 
                 loss.backward()
                 self.optimizer.step()
