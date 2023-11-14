@@ -6,7 +6,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 from data_utils.data_loader import getDataloader
-from evaluate.evaluate import score
+from evaluate.evaluate import cal_score
 from model.model import CNN_Model
 from tqdm import tqdm
 
@@ -69,7 +69,7 @@ class Training():
                     images, labels = it.to(self.device), item.to(self.device)
                     logits = self.model(images)
                     preds = logits.argmax(-1)
-                    cm, acc, f1, precision, recall = score(labels.cpu().numpy(),preds.cpu().numpy())
+                    cm, acc, f1, precision, recall = cal_score(labels.cpu().numpy(),preds.cpu().numpy())
                     train_acc += acc
                     train_f1 += f1
                     train_precision += precision
