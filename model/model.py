@@ -27,5 +27,5 @@ class CNN_Model(nn.Module):
             loss = self.loss_fn(logits, labels)
             return logits, loss
         else:
-            logits = self.mlp(imgs)
+            logits = self.cnn(imgs)
             return logits
