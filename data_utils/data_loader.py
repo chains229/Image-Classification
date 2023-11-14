@@ -6,13 +6,13 @@ from torchvision import datasets
 import torchvision.transforms as transforms
 
 # MNIST
-mnist_dataset_train = datasets.MNIST(root=data_root, train=True, download=True,
+mnist_dataset_train = datasets.MNIST(root='./data', train=True, download=True,
                            transform=transforms.Compose([
                                transforms.ToTensor(),
                                transforms.Normalize((0.1307,), (0.3081,))
                            ]))
 
-mnist_dataset_test = datasets.MNIST(root=data_root, train=False, download=True,
+mnist_dataset_test = datasets.MNIST(root='./data', train=False, download=True,
                            transform=transforms.Compose([
                                 transforms.ToTensor(),
                                 transforms.Normalize((0.1307,), (0.3081,))
