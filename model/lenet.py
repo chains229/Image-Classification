@@ -5,7 +5,7 @@ import torch.nn as nn
 class LeNet(nn.Module):
     def __init__(self, config):
         super(LeNet, self).__init__()
-        self.conv1 = nn.Conv2d(config['input_channel'], 6, kernel_size=5)
+        self.conv1 = nn.Conv2d(config['input_channel'], 6, kernel_size=5, padding=2)
         self.conv2 = nn.Conv2d(6, 16, kernel_size=5)
         self.avg1 = nn.AvgPool2d(kernel_size=2, stride=2)
         self.avg2 = nn.AvgPool2d(kernel_size=2, stride=2)
