@@ -14,12 +14,13 @@ class LeNet(nn.Module):
         self.fc3 = nn.Linear(84, config['num_classes']) 
 
     def forward(self, x):
-        x = nn.functional.relu(self.conv1(x))
+        x = nn.ReLU(self.conv1(x))
         x = self.avg1(x)
-        x = nn.functional.relu(self.conv2(x))
+        x = nn.ReLU(self.conv2(x))
         x = self.avg2(x)
         x = x.view(-1, 16 * 5 * 5)  
-        x = nn.functional.relu(self.fc1(x))
-        x = nn.functional.relu(self.fc2(x))
+        x = nn.ReLU(self.fc1(x))
+        x = nn.ReLU(self.fc2(x))
         x = self.fc3(x)  
+        x = torch.softmax(x, dim=-1)
         return x
