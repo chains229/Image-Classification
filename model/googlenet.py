@@ -91,7 +91,7 @@ class GoogLeNet(nn.Module):
         out = self.maxpool(out)
         out = self.a5(out)
         out = self.b5(out)
-        out = self.avgpool(out)
+        #out = self.avgpool(out)
         out = out.view(out.size(0), -1)
         out = self.linear(out)
         return out
