@@ -11,7 +11,7 @@ momentum: 0.5
 patience: 5
 
 # Model
-model: lenet # lenet, googlenet or resnet18 
+model: googlenet # lenet, googlenet or resnet18 
 input_channel: 1 # 1 for MNIST, 3 for CIFAR10
 
 save_path: ./save
