@@ -2,7 +2,6 @@ from typing import List, Dict, Optional
 import torch
 import torch.nn as nn
 
-
 class Inception(nn.Module):
     def __init__(self, in_planes, n1x1, n3x3red, n3x3, n5x5red, n5x5, pool_planes):
         super(Inception, self).__init__()
@@ -40,7 +39,7 @@ class Inception(nn.Module):
 class GoogLeNet(nn.Module):
     def __init__(self, config):
         super(GoogLeNet, self).__init__()
-        self.conv1 = nn.Conv2d(config['input_channel'], out_channels=64, kernel_size=7, stride=2, padding=3)
+        self.conv1 = nn.Conv2d(config['input_channel'], 64, kernel_size=7, stride=2, padding=3)
         self.conv2 = nn.Conv2d(64, 64, kernel_size=1)
         self.conv3 = nn.Conv2d(64, 192, kernel_size=3, padding=1)
         self.inception = Inception(192, 64, 96, 128, 16, 32, 32)
@@ -49,8 +48,8 @@ class GoogLeNet(nn.Module):
         self.maxpool2 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool3 = nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
         self.maxpool4 = nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
-        self.fc = nn.Linear(1024, config['num_classes'])
         self.avg = nn.AvgPool2d(kernel_size=(1, 1))
+        self.fc = nn.Linear(1024, config['num_classes'])
         
     def forward(self, x):
         x = self.relu(self.conv1(x))
