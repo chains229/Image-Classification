@@ -55,6 +55,8 @@ class GoogLeNet(nn.Module):
         self.relu2 = nn.ReLU(True)
         self.relu3 = nn.ReLU(True)
         self.relu4 = nn.ReLU(True)
+        self.relu5 = nn.ReLU(True)
+        self.relu6 = nn.ReLU(True)
         self.maxpool1 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool2 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool3 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -72,7 +74,7 @@ class GoogLeNet(nn.Module):
         x = self.inception3a(x)
         x = self.inception3b(x)
         
-        x = self.maxpool3(x)
+        x = self.maxpool3(self.relu4(x))
         
         x = self.inception4a(x)
         x = self.inception4b(x)
@@ -80,12 +82,12 @@ class GoogLeNet(nn.Module):
         x = self.inception4d(x)
         x = self.inception4e(x)
         
-        x = self.maxpool4(x)
+        x = self.maxpool4(self.relu5(x))
         
         x = self.inception5a(x)
         x = self.inception5b(x)
         
-        x = self.avg(self.relu4(x))
+        x = self.avg(self.relu6(x))
         x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x
