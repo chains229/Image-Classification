@@ -5,8 +5,8 @@ batch_size: 128
 shuffle: True
 
 # Parameters
-num_epochs: 50
-learning_rate: 0.001
+num_epochs: 100
+learning_rate: 0.01
 momentum: 0.5
 patience: 5
 
