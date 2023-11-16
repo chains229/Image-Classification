@@ -24,5 +24,5 @@ class LeNet(nn.Module):
         x = self.relu3(self.fc1(x))
         x = self.relu4(self.fc2(x))
         x = self.fc3(x)  
-        x = torch.softmax(x, dim=-1)
+        #x = torch.softmax(x, dim=-1)
         return x
