@@ -61,7 +61,7 @@ class GoogLeNet(nn.Module):
         self.maxpool2 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool3 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool4 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-        self.avg = nn.AvgPool2d(kernel_size=(1, 1))
+        self.avg = nn.AdaptiveAvgPool2d(kernel_size=(1, 1))
         self.fc = nn.Linear(1024, config['num_classes'])
         self.dropout = nn.Dropout(config['dropout'])
         
