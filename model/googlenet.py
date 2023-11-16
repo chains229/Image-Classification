@@ -6,7 +6,7 @@ class Inception(nn.Module):
     def __init__(self, in_planes, n1x1, n3x3red, n3x3, n5x5red, n5x5, pool_planes):
         super(Inception, self).__init__()
         # 1x1 conv branch
-        self.b1 = nn.Conv2d(in_planes, n1x1, kernel_size=1),
+        self.b1 = nn.Conv2d(in_planes, n1x1, kernel_size=1)
 
         # 1x1 conv -> 3x3 conv branch
         self.b2 = nn.Sequential(
