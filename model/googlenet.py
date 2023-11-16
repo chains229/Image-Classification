@@ -24,7 +24,7 @@ class Inception(nn.Module):
 
         # 3x3 pool -> 1x1 conv branch
         self.b4 = nn.Sequential(
-            nn.MaxPool2d(3, stride=1, padding=1),
+            nn.MaxPool2d(kernel_size=3, stride=1, padding=1),
             nn.Conv2d(in_planes, pool_planes, kernel_size=1)
         )
 
