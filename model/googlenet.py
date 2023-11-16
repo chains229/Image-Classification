@@ -42,7 +42,7 @@ class GoogLeNet(nn.Module):
         self.conv1 = nn.Conv2d(config['input_channel'], 64, kernel_size=7, stride=2, padding=3)
         self.conv2 = nn.Conv2d(64, 64, kernel_size=1)
         self.conv3 = nn.Conv2d(64, 192, kernel_size=3, padding=1)
-        elf.inception3a = Inception(192, 64, 96, 128, 16, 32, 32)
+        self.inception3a = Inception(192, 64, 96, 128, 16, 32, 32)
         self.inception3b = Inception(256, 128, 128, 192, 32, 96, 64)
         self.inception4a = Inception(480, 192, 96, 208, 16, 48, 64)
         self.inception4b = Inception(512, 160, 112, 224, 24, 64, 64)
