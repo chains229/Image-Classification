@@ -51,7 +51,10 @@ class GoogLeNet(nn.Module):
         self.inception4e = Inception(528, 256, 160, 320, 32, 128, 128)
         self.inception5a = Inception(832, 256, 160, 320, 32, 128, 128)
         self.inception5b = Inception(832, 384, 192, 384, 48, 128, 128)
-        self.relu = nn.ReLU(True)
+        self.relu1 = nn.ReLU(True)
+        elf.relu2 = nn.ReLU(True)
+        elf.relu3 = nn.ReLU(True)
+        elf.relu4 = nn.ReLU(True)
         self.maxpool1 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool2 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.maxpool3 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -60,10 +63,10 @@ class GoogLeNet(nn.Module):
         self.fc = nn.Linear(1024, config['num_classes'])
         
     def forward(self, x):
-        x = self.relu(self.conv1(x))
+        x = self.relu1(self.conv1(x))
         x = self.maxpool1(x)
-        x = self.relu(self.conv2(x))
-        x = self.relu(self.conv3(x))
+        x = self.relu2(self.conv2(x))
+        x = self.relu3(self.conv3(x))
         x = self.maxpool2(x)
         
         x = self.inception3a(x)
@@ -82,7 +85,7 @@ class GoogLeNet(nn.Module):
         x = self.inception5a(x)
         x = self.inception5b(x)
         
-        x = self.avg(self.relu(x))
+        x = self.avg(self.relu4(x))
         x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x
