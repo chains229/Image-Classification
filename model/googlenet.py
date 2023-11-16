@@ -63,6 +63,7 @@ class GoogLeNet(nn.Module):
         self.maxpool4 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.avg = nn.AvgPool2d(kernel_size=(1, 1))
         self.fc = nn.Linear(1024, config['num_classes'])
+        self.dropout = nn.Dropout(config['dropout'])
         
     def forward(self, x):
         x = self.relu1(self.conv1(x))
@@ -89,5 +90,6 @@ class GoogLeNet(nn.Module):
         
         x = self.avg(self.relu6(x))
         x = x.view(x.size(0), -1)
+        x = self.dropout(x)
         x = self.fc(x)
         return x
