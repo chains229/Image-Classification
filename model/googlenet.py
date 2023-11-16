@@ -40,7 +40,7 @@ class Inception(nn.Module):
 class GoogLeNet(nn.Module):
     def __init__(self, config):
         super(GoogLeNet, self).__init__()
-        self.conv1 = nn.Conv2d(['input_channel'], out_channels=64, kernel_size=7, stride=2, padding=3)
+        self.conv1 = nn.Conv2d(config['input_channel'], out_channels=64, kernel_size=7, stride=2, padding=3)
         self.conv2 = nn.Conv2d(64, 64, kernel_size=1)
         self.conv3 = nn.Conv2d(64, 192, kernel_size=3, padding=1)
         self.inception = Inception(192, 64, 96, 128, 16, 32, 32)
