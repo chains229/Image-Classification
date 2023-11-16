@@ -46,7 +46,7 @@ class GoogLeNet(nn.Module):
         self.inception3b = Inception(256, 128, 128, 192, 32, 96, 64)
         self.inception4a = Inception(480, 192, 96, 208, 16, 48, 64)
         self.inception4b = Inception(512, 160, 112, 224, 24, 64, 64)
-        self.inception4c = Inceptio(512, 128, 128, 256, 24, 64, 64)
+        self.inception4c = Inception(512, 128, 128, 256, 24, 64, 64)
         self.inception4d = Inception(512, 112, 144, 288, 32, 64, 64)
         self.inception4e = Inception(528, 256, 160, 320, 32, 128, 128)
         self.inception5a = Inception(832, 256, 160, 320, 32, 128, 128)
