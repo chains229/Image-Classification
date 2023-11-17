@@ -62,5 +62,5 @@ class ResNet(nn.Module):
         return out
 
 
-def ResNet18(config):
+def ResNet_18(config):
     return ResNet(ResidualBlock, config)
