@@ -37,33 +37,30 @@ cifar_10_dataset_test = datasets.CIFAR10(
                 ]))
     
 # PASCAL VOC 2007 (chưa xong)
-'''
-class PASCAL_VOC_2007_Dataset():
-    def __init__(self):
-        
+voc2007_dataset_train = datasets.VOCDetection(root='./data', year="2007", download=True, image_set="train", 
+                                    transform=transforms.Compose([
+                                              transforms.ToTensor(),
+                                              transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+                                    ]))
+voc2007_dataset_test = datasets.VOCDetection(root='./data', year="2007", download=True, image_set="test", 
+                                transform=transforms.Compose([
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+                                ]))
 
-    def __len__(self):
-        return len(self.data)
-    
-    def __getitem__(self, idx):
-'''        
-    
+
 class getDataloader():
     def __init__(self, config):
         self.config = config
         if config['dataset'] == 'mnist':
             self.train_dataset = mnist_dataset_train
             self.test_dataset = mnist_dataset_test
-        
         elif config['dataset'] == 'cifar':
             self.train_dataset = cifar_10_dataset_train
             self.test_dataset = cifar_10_dataset_test
-        
-        '''
         else:   
-            self.train_dataset = PASCAL_VOC_2007_Dataset()
-            self.test_dataset = test_images_file
-        '''
+            self.train_dataset = voc2007_dataset_train
+            self.test_dataset = voc2007_dataset_test
 
     def get_train(self):
         return DataLoader(self.train_dataset, batch_size = self.config['batch_size'], shuffle = self.config['shuffle'])
