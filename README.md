@@ -1,7 +1,7 @@
-Usage on Kaggle
+Usage
 
 ```python
-!python "/kaggle/working/Image-Classification/main.py" --config /kaggle/working/Image-Classification/config/config.yaml
+!python .../Image-Classification/main.py --config .../Image-Classification/config/config.yaml
 ```
 
 Note:
