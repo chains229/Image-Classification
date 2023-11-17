@@ -1,6 +1,7 @@
 # Data
-dataset: cifar  # mnist or cifar
-num_classes: 10 
+dataset: voc2007  # mnist or cifar or voc2007
+num_classes: 20  # 10 for mnist and cifar, 20 for voc2007
+input_channel: 3 # 1 for mnist, 3 for cifar10 and voc2007 
 batch_size: 128
 shuffle: True
 
@@ -12,7 +13,6 @@ patience: 5
 dropout: 0.3
 
 # Model
-model: resnet18 # lenet, googlenet or resnet18 
-input_channel: 3 # 1 for MNIST, 3 for CIFAR10
+model: resnet50 # lenet, googlenet, resnet18 or resnet50
 
 save_path: ./save
