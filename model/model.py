@@ -5,7 +5,7 @@ import torch.nn as nn
 from model.lenet import LeNet
 from model.googlenet import GoogLeNet
 from model.resnet18 import ResNet_18
-#from resnet50 import ResNet_50
+from resnet50 import ResNet_50
 
 class CNN_Model(nn.Module):
     def __init__(self, config):
