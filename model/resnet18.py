@@ -2,8 +2,20 @@ from typing import List, Dict, Optional
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torchvision.models import resnet18
+
+class ResNet_18(nn.Module):
+    def __init__(self, config):
+        super(ResNet_18, self).__init__()
+        self.resnet18 = resnet18(pretrained=False)
+        in_features = self.resnet18.fc.in_features
+        self.resnet18.fc = nn.Linear(in_features, config['num_classes'])
+
+    def forward(self, x):
+        return self.resnet18(x)
 
 
+'''
 class ResidualBlock(nn.Module):
     def __init__(self, inchannel, outchannel, stride=1):
         super(ResidualBlock, self).__init__()
@@ -61,6 +73,6 @@ class ResNet(nn.Module):
         out = self.fc(out)
         return out
 
-
 def ResNet_18(config):
     return ResNet(ResidualBlock, config)
+'''
