@@ -1,5 +1,5 @@
 # Data
-dataset: mnist  # mnist or cifar
+dataset: cifar  # mnist or cifar
 num_classes: 10 
 batch_size: 128
 shuffle: True
@@ -12,7 +12,7 @@ patience: 5
 dropout: 0.3
 
 # Model
-model: googlenet # lenet, googlenet or resnet18 
+model: resnet18 # lenet, googlenet or resnet18 
 input_channel: 1 # 1 for MNIST, 3 for CIFAR10
 
 save_path: ./save
