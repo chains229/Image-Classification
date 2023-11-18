@@ -49,7 +49,7 @@ voc2007_transformations = transforms.Compose([transforms.Resize((300, 300)),
                                           transforms.ToTensor(),
                                           transforms.Normalize(mean=voc2007_mean, std=voc2007_std),
                                           ])
-transformations_test = transforms.Compose([transforms.Resize(330),
+voc2007_transformations_test = transforms.Compose([transforms.Resize(330),
                                                transforms.FiveCrop(300),
                                                transforms.Lambda(lambda crops: torch.stack(
                                                    [transforms.ToTensor()(crop) for crop in crops])),
