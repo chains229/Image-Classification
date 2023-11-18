@@ -21,11 +21,11 @@ class CNN_Model(nn.Module):
 
         self.loss_fn = nn.CrossEntropyLoss()
 
-    def forward(self, imgs, labels=None):
+    def forward(self, images, labels=None):
         if labels is not None:
-            logits = self.cnn(imgs)
+            logits = self.cnn(images)
             loss = self.loss_fn(logits, labels)
             return logits, loss
         else:
-            logits = self.cnn(imgs)
+            logits = self.cnn(images)
             return logits
