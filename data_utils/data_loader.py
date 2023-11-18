@@ -56,10 +56,10 @@ transformations_test = transforms.Compose([transforms.Resize(330),
                                                transforms.Lambda(lambda crops: torch.stack(
                                                    [transforms.Normalize(mean=voc2007_mean, std=voc2007_std)(crop) for crop in crops])),
                                                ])
-voc2007_dataset_train = datasets.VOCDetection(directory, year="2007", image_set="train", transform=voc2007_transformations,
-                                      target_transform=create_label, download=True)
-voc2007_dataset_test = datasets.VOCDetection(directory, year="2007", image_set="val", transform=voc2007_transformations_test,
-                                     target_transform=create_label, download=True)
+voc2007_dataset_train = datasets.VOCDetection(root='./data', year="2007", image_set="train", transform=voc2007_transformations,
+                                     download=True)
+voc2007_dataset_test = datasets.VOCDetection(root='./data', year="2007", image_set="test", transform=voc2007_transformations_test,
+                                     download=True)
 
 
 
