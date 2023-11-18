@@ -39,13 +39,13 @@ cifar_10_dataset_test = datasets.CIFAR10(
 # PASCAL VOC 2007 (chưa xong)
 voc2007_dataset_train = datasets.VOCDetection(root='./data', year="2007", download=True, image_set="train", 
                                     transform=transforms.Compose([
-                                              transforms.Resize(300,500),
+                                              transforms.Resize((300,500)),
                                               transforms.ToTensor(),
                                               transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
                                     ]))
 voc2007_dataset_test = datasets.VOCDetection(root='./data', year="2007", download=True, image_set="test", 
                                 transform=transforms.Compose([
-                                          transforms.Resize(300,500),
+                                          transforms.Resize((300,500)),
                                           transforms.ToTensor(),
                                           transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
                                 ]))
