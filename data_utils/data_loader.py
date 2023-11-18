@@ -37,6 +37,33 @@ cifar_10_dataset_test = datasets.CIFAR10(
                 ]))
     
 # PASCAL VOC 2007 (chưa xong)
+voc2007_mean = [0.457342265910642, 0.4387686270106377, 0.4073427106250871]
+voc2007_std = [0.26753769276329037, 0.2638145880487105, 0.2776826934044154]
+voc2007_transformations = transforms.Compose([transforms.Resize((300, 300)),
+                                          transforms.RandomChoice([
+                                              transforms.ColorJitter(brightness=(0.80, 1.20)),
+                                              transforms.RandomGrayscale(p=0.25)
+                                          ]),
+                                          transforms.RandomHorizontalFlip(p=0.25),
+                                          transforms.RandomRotation(25),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize(mean=voc2007_mean, std=voc2007_std),
+                                          ])
+transformations_test = transforms.Compose([transforms.Resize(330),
+                                               transforms.FiveCrop(300),
+                                               transforms.Lambda(lambda crops: torch.stack(
+                                                   [transforms.ToTensor()(crop) for crop in crops])),
+                                               transforms.Lambda(lambda crops: torch.stack(
+                                                   [transforms.Normalize(mean=voc2007_mean, std=voc2007_std)(crop) for crop in crops])),
+                                               ])
+voc2007_dataset_train = datasets.VOCDetection(directory, year="2007", image_set="train", transform=voc2007_transformations,
+                                      target_transform=create_label, download=True)
+voc2007_dataset_test = datasets.VOCDetection(directory, year="2007", image_set="val", transform=voc2007_transformations_test,
+                                     target_transform=create_label, download=True)
+
+
+
+'''
 voc2007_dataset_train = datasets.VOCDetection(root='./data', year="2007", download=True, image_set="train", 
                                     transform=transforms.Compose([
                                               transforms.Resize((30,50)),
@@ -49,7 +76,7 @@ voc2007_dataset_test = datasets.VOCDetection(root='./data', year="2007", downloa
                                           transforms.ToTensor(),
                                           transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
                                 ]))
-
+'''
 
 class getDataloader():
     def __init__(self, config):
