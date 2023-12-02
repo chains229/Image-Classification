@@ -6,7 +6,7 @@ import torchvision.models as models
 
 class ResNet_50(nn.Module):
     def __init__(self, config):
-        super(ResNet50_Model, self).__init__()
+        super(ResNet_50, self).__init__()
         self.num_classes = config['num_classes']
         self.resnet_50 = models.resnet50(pretrained=True)
         for param in self.resnet_50.parameters():
