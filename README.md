@@ -1,4 +1,4 @@
-Usage
+Example Usage
 
 ```python
 !python .../Image-Classification/main.py --config .../Image-Classification/config/config.yaml
